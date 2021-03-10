@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Test Script</title>
+  <style>
+
+    .container{
+      margin: 50px;
+      display: flex;
+      flex-direction: column;
+      padding-left: 350px;
+    }
+    button{
+      background:#fff;
+      color: red;
+      text-decoration:none;
+      padding: 5px;
+      padding-left: 20px;
+      padding-right: 20px;
+      border-radius: 10px;
+
+
+    }
+    #content{
+      margin-top: 100px;
+    }
+  </style>
+
+
+</head>
+<body>
+<div class="container">
+   <div class="">
+     <label for="myfile">Select a file:</label>
+    <input type="file" id="myfile" name="myfile">
+    <button type="button" onclick="showfileData()" name="button">Click</button>
+   </div>
+   <hr>
+   <div id="content">
+          <pre id="output"></pre>
+   </div>
+</div>
+
+<script type="text/javascript">
+
+   function showfileData(){
+      const input= document.getElementById("myfile");
+      console.log(input.files[0].name)
+      var reader = new FileReader();
+        reader.onload = function(){
+          var text = reader.result;
+          var output = document.getElementById('output');
+          output.innerText = text;
+          <!-- console.log(reader.result.substring(0, 200)); -->
+        };
+        reader.readAsText(input.files[0]);
+   }
+
+
+</script>
+</body>
+</html>

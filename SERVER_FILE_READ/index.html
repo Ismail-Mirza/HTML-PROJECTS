@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Server FILE</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+  function retFileData(filename){
+    var str="";
+    const url = filename;
+    fetch(url)
+       .then( r => r.text() )
+       .then( t => str += t)
+    return str;
+  }
+
+  var str = retFileData("/static/data/word-small.txt");
+  function loadFile(filePath) {
+  var result = null;
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open("GET", filePath, false);
+  xmlhttp.send();
+  if (xmlhttp.status==200) {
+    result = xmlhttp.responseText;
+  }
+  return result;
+}
+  console.log(loadFile("/static/data/word-small.txt"));
+
+</script>
+</body>
+</html>
+
